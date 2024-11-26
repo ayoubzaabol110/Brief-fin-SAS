@@ -70,6 +70,24 @@ void affichage() {
         printf("----------------------------\n");
     }
 }
+void modifier(tache tch[], int index) {
+    if (index >= 0 && index < nm) {
+        printf("Mise à jour des informations de la tâche %d\n", index + 1);
+
+        printf("Nouveau titre: ");
+        scanf("%s", tch[index].titre);
+        printf("Nouvelle description: ");
+        scanf("%s", tch[index].description);
+        printf("Nouvelle priorité (1 pour High, 2 pour Low): ");
+        scanf("%d", &tch[index].priorite);
+        printf("Nouvelle date (jour mois année): ");
+        scanf("%d %d %d", &tch[index].date.jour, &tch[index].date.mois, &tch[index].date.annee);
+        printf("Informations mises à jour avec succès.\n");
+    } else {
+        printf("Index invalide.\n");
+    }
+}
+
 void supprimer(int index) {
     if (index < 0 || index >= nm) {
         printf("Index invalide. Impossible de supprimer.\n");
@@ -103,6 +121,11 @@ switch (choix) {
                 printf("Entrez l'index de la tâche à supprimer: ");
                 scanf("%d", &index);
                 supprimer(index - 1);
+                break;
+        case 4:
+                printf("Entrez l'index de la tâche à modifier: ");
+                scanf("%d", &index);
+                modifier(tch, index - 1);
                 break;
         }
         
