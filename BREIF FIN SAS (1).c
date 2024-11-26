@@ -87,7 +87,7 @@ void modifier(tache tch[], int index) {
 
 // Function to validate date
 int dateValide(int jour, int mois, int annee) {
-    if (annee < 1900 || annee > 2100) {
+if (annee <= 2024|| annee > 2100) {
         return 0;
     }
     if (mois < 1 || mois > 12) {
