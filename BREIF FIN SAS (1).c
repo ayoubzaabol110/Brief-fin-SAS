@@ -50,6 +50,26 @@ void ajouter() {
 
     nm++;
 }
+void affichage() {
+    if (nm == 0) {
+        printf("Aucune tache a afficher.\n");
+        return;
+    }
+    for (int i = 0; i < nm; i++) {
+        printf("Tache %d\n", i + 1);
+        printf("Titre: %s\n", tch[i].titre);
+        printf("Description: %s\n", tch[i].description);
+        printf("Date: %d/%d/%d\n", tch[i].date.jour, tch[i].date.mois, tch[i].date.annee);
+        if (tch[i].priorite == 1) {
+            printf("Priorité: High\n");
+        } else if (tch[i].priorite == 2) {
+            printf("Priorité: Low\n");
+        } else {
+            printf("Priorité: Inconnue\n");
+        }
+        printf("----------------------------\n");
+    }
+}
 
 int main() {
   do {
@@ -65,9 +85,12 @@ switch (choix) {
             case 1:
                 ajouter();
                 break;
+         case 2:
+                affichage();
+                break;
         }
         
-    } while (choix != 0);
+    } while (choix != 6);
 
     return 0;
 }
