@@ -99,6 +99,32 @@ void supprimer(int index) {
         printf("Tâche supprimée avec succès.\n");
     }
 }
+void filtrerParPriorite(int prioriteRecherchee) {
+    int trouve = 0;
+    printf("Tâches avec priorité ");
+
+    if (prioriteRecherchee == 1) {
+        printf("High:\n");
+    } else if (prioriteRecherchee == 2) {
+        printf("Low:\n");
+    } else {
+        printf("inconnue.\n");
+        return;
+    }
+    for (int i = 0; i < nm; i++) {
+        if (tch[i].priorite == prioriteRecherchee) {
+            printf("Tâche %d\n", i + 1);
+            printf("Titre: %s\n", tch[i].titre);
+            printf("Description: %s\n", tch[i].description);
+            printf("Date: %d/%d/%d\n", tch[i].date.jour, tch[i].date.mois, tch[i].date.annee);
+            printf("----------------------------\n");
+            trouve = 1;
+        }
+    }
+    if (!trouve) {
+        printf("Aucune tâche trouvée avec la priorité spécifiée.\n");
+    }
+}
 
 int main() {
   do {
@@ -126,6 +152,11 @@ switch (choix) {
                 printf("Entrez l'index de la tâche à modifier: ");
                 scanf("%d", &index);
                 modifier(tch, index - 1);
+                break;
+                 case 5:
+                printf("Entrez la priorité à filtrer (1: High, 2: Low): ");
+                scanf("%d", &priorite);
+                filtrerParPriorite(priorite);
                 break;
         }
         
