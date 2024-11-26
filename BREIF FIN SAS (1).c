@@ -70,6 +70,17 @@ void affichage() {
         printf("----------------------------\n");
     }
 }
+void supprimer(int index) {
+    if (index < 0 || index >= nm) {
+        printf("Index invalide. Impossible de supprimer.\n");
+    } else {
+        for (int i = index; i <=nm; i++) {
+            tch[i] = tch[i + 1];
+        }
+        nm--;
+        printf("Tâche supprimée avec succès.\n");
+    }
+}
 
 int main() {
   do {
@@ -87,6 +98,11 @@ switch (choix) {
                 break;
          case 2:
                 affichage();
+                break;
+        case 3:
+                printf("Entrez l'index de la tâche à supprimer: ");
+                scanf("%d", &index);
+                supprimer(index - 1);
                 break;
         }
         
